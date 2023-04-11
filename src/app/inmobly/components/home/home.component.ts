@@ -13,6 +13,8 @@ export class HomeComponent implements OnInit {
   page: any = 1;
   total: any;
   loading: boolean = false
+
+  orderHeader: String = ''
   constructor(
 
     private apichannel: VideosService
@@ -37,15 +39,10 @@ export class HomeComponent implements OnInit {
     this.page = event;
   }
 
-  // sortData() {
-  //   if (this.data) {
-  //     let newar = this.videos.sort((a: any, b: any) => b.title - a.title);
-  //     this.data = newar
-  //     console.log('oky');
-  //   }
-  // }
-
-  // loading
+  // sort function btn
+  sort(headerTitle: string) {
+    this.orderHeader = headerTitle
+  }
 
 
 }

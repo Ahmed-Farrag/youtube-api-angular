@@ -3,8 +3,8 @@
   <table class="table mt-2">
     <thead>
       <tr>
-        <th scope="col"></th>
-        <th scope="col">
+        <th></th>
+        <th (click)="sort('snippet.title')">
           <svg
             aria-hidden="true"
             class="w-5 h-5 d-inline"
@@ -21,7 +21,7 @@
           </svg>
           Title
         </th>
-        <th scope="col">
+        <th (click)="sort('snippet.snippet.publishedAt')">
           <svg
             aria-hidden="true"
             class="w-5 h-5 d-inline"
@@ -37,7 +37,7 @@
             ></path></svg
           >Publish Date
         </th>
-        <th scope="col"></th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -45,9 +45,10 @@
         <tr
           *ngFor="
             let video of videos
+              | orderBy : orderHeader
               | paginate
                 : {
-                    itemsPerPage: 5,
+                    itemsPerPage: 10,
                     currentPage: page,
                     totalItems: total
                   }

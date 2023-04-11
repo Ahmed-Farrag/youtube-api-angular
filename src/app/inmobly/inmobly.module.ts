@@ -11,7 +11,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { StatistecComponent } from './components/statistec/statistec.component';
 import { FavScreenComponent } from './components/fav-screen/fav-screen.component';
 import { NgxStarRatingModule } from 'ngx-star-rating';
-// import { OrderModule } from 'ngx-order-pipe';
+import { OrderModule } from 'ngx-order-pipe';
+
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { NgxStarRatingModule } from 'ngx-star-rating';
     RouterModule,
     NgxPaginationModule,
     NgxStarRatingModule,
+    OrderModule
 
   ],
 })

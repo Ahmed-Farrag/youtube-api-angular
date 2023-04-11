@@ -16,12 +16,12 @@ export class VideosService {
 
   constructor(public http: HttpClient) { }
   getAllVideos(channel: string): Observable<any> {
-    const APIURL = `https://www.googleapis.com/youtube/v3/search?key=${environment.APIKEY}&channelId=${channel}&part=snippet,id&order=date&maxResults=10`;
+    const APIURL = `https://www.googleapis.com/youtube/v3/search?key=${environment.APIKEY}&channelId=${channel}&part=snippet,id&order=date&maxResults=20`;
     return this.http.get(`${APIURL}`);
   }
 
   test(channel: string) {
-    const APIURL = `https://www.googleapis.com/youtube/v3/search?key=${environment.APIKEY}&channelId=${channel}&part=snippet,id&order=date&maxResults=10`;
+    const APIURL = `https://www.googleapis.com/youtube/v3/search?key=${environment.APIKEY}&channelId=${channel}&part=snippet,id&order=date&maxResults=20`;
     return this.http.get(APIURL).subscribe((data) => {
       console.log(data);
       this.listner.next(data);
