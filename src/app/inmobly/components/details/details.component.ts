@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NgxSpinnerService } from 'ngx-spinner';
 import { VideosService } from '../../services/videos.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -20,7 +19,7 @@ export class DetailsComponent implements OnInit {
   // isUserLogged: boolean = false;
   constructor(
     private route: ActivatedRoute,
-    private spinner: NgxSpinnerService,
+
     private apichannel: VideosService
   ) {
     this.id = this.route.snapshot.paramMap.get('id');
