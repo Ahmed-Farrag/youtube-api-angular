@@ -11,7 +11,7 @@ export class TopBarComponent implements OnInit {
   constructor(private fb: FormBuilder, private apichannel: VideosService) { }
 
   form!: FormGroup;
-  active: boolean = false
+  active: boolean = true
   ngOnInit(): void {
     this.initializeForm();
   }
