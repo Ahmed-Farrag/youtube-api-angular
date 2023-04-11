@@ -41,7 +41,15 @@
     </thead>
     <tbody>
       <tr
-        *ngFor="let video of videos"
+        *ngFor="
+          let video of videos
+            | paginate
+              : {
+                  itemsPerPage: 5,
+                  currentPage: page,
+                  totalItems: total
+                }
+        "
         routerLink="/details/{{ video.id.videoId }}"
       >
         <td><img src="{{ video.snippet.thumbnails.medium.url }}" alt="" /></td>
