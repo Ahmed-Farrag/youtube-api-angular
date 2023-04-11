@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-fav-screen',
@@ -8,7 +10,9 @@ import { Location } from '@angular/common';
 })
 export class FavScreenComponent implements OnInit {
 
-  constructor(private location: Location) { }
+  constructor(private location: Location,
+    private toastr: ToastrService,
+    private router: Router) { }
   favItem: any[] = []
   item: any
 
@@ -32,17 +36,16 @@ export class FavScreenComponent implements OnInit {
     this.favItem = []
     // this.favItem.splice(index, 1)
     localStorage.setItem("fav", JSON.stringify(this.favItem))
-
-    this.loading = true
-
+    this.toastr.error('Didnt have Favorite Videos');
+    // this.loading = true
+    this.router.navigate(['home'])
   }
 
   goBack() {
     this.location.back()
   }
-
-
-
-
+  // goBackTo() {
+  //   this.location.back()
+  // }
 
 }

@@ -12,6 +12,8 @@ import { StatistecComponent } from './components/statistec/statistec.component';
 import { FavScreenComponent } from './components/fav-screen/fav-screen.component';
 import { NgxStarRatingModule } from 'ngx-star-rating';
 import { OrderModule } from 'ngx-order-pipe';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -29,7 +31,9 @@ import { OrderModule } from 'ngx-order-pipe';
     RouterModule,
     NgxPaginationModule,
     NgxStarRatingModule,
-    OrderModule
+    OrderModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(), // ToastrModule added
 
   ],
 })

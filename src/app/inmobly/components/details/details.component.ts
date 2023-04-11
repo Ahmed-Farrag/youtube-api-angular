@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { VideosService } from '../../services/videos.service';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-details',
@@ -19,8 +20,8 @@ export class DetailsComponent implements OnInit {
   // isUserLogged: boolean = false;
   constructor(
     private route: ActivatedRoute,
-
-    private apichannel: VideosService
+    private apichannel: VideosService,
+    private toastr: ToastrService
   ) {
     this.id = this.route.snapshot.paramMap.get('id');
   }
@@ -45,11 +46,13 @@ export class DetailsComponent implements OnInit {
       this.favItem = JSON.parse(localStorage.getItem('fav')!);
       let exist = this.favItem.find(items => items.etag == this.data.etag);
       if (exist) {
-        alert("product is already in ur cart")
+        this.toastr.error('video is already in ur list');
+
       } else {
         this.favItem.push(this.data);
         localStorage.setItem('fav', JSON.stringify(this.favItem));
         // console.log(this.data);
+        this.toastr.success('Added to Favorite List');
       }
     } else {
       this.favItem.push(this.data);
@@ -57,7 +60,9 @@ export class DetailsComponent implements OnInit {
     }
   }
 
+  // showSuccess() {
 
+  // }
 
   // starFunc() {
   //   console.log('star heo');
