@@ -14,7 +14,7 @@ export class DetailsComponent implements OnInit {
 
   favItem: any[] = [];
   starItem: any[] = [];
-  videos: any;
+  items: any;
 
   loading: boolean = false
   // isUserLogged: boolean = false;
@@ -44,14 +44,14 @@ export class DetailsComponent implements OnInit {
   add() {
     if ('fav' in localStorage) {
       this.favItem = JSON.parse(localStorage.getItem('fav')!);
-      let exist = this.favItem.find(videos => videos.id == this.data.id)
-      // if (exist) {
-      //   alert("product is already in ur cart")
-      // } else {
-      this.favItem.push(this.data);
-      localStorage.setItem('fav', JSON.stringify(this.favItem));
-      // console.log(this.data);
-      // }
+      let exist = this.favItem.find(items => items.etag == this.data.etag);
+      if (exist) {
+        alert("product is already in ur cart")
+      } else {
+        this.favItem.push(this.data);
+        localStorage.setItem('fav', JSON.stringify(this.favItem));
+        // console.log(this.data);
+      }
     } else {
       this.favItem.push(this.data);
       localStorage.setItem('fav', JSON.stringify(this.favItem));
