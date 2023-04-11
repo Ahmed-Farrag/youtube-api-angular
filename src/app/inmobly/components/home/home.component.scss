@@ -1,0 +1,28 @@
+
+::ng-deep {
+  .ngx-pagination .pagination-previous {
+
+    display: none !important;
+  }
+  .ngx-pagination .pagination-next {
+    display: none !important;
+  }
+  .small-screen {
+    display: none !important;
+  }
+  .ngx-pagination .current {
+    background: #adb5bd !important;
+    border-radius: 10px;
+  }
+ 
+  
+//   .ngx-pagination .current::after {
+//     content: '<';
+//   }
+//   .ngx-pagination .current:active {
+//     content: '';
+//   }
+//   .ngx-pagination .current span {
+//     display: none !important;
+//   }
+}

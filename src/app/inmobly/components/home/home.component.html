@@ -1,0 +1,65 @@
+<div class="container-md">
+  <table class="table mt-2">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">
+          <svg
+            aria-hidden="true"
+            class="w-5 h-5 d-inline"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="3"
+              d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9"
+            ></path>
+          </svg>
+          Title
+        </th>
+        <th scope="col">
+          <svg
+            aria-hidden="true"
+            class="w-5 h-5 d-inline"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="3"
+              d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9"
+            ></path></svg
+          >Publish Date
+        </th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let video of videos"
+        routerLink="/details/{{ video.id.videoId }}"
+      >
+        <td><img src="{{ video.snippet.thumbnails.medium.url }}" alt="" /></td>
+        <td>{{ video.snippet.title }}</td>
+        <td>{{ video.snippet.publishedAt | date : "dd-M-YYYY" }}</td>
+        <td>
+          <a
+            class="btn border hover:bg-red-600 hover:text-white"
+            routerLink="/details"
+            >Details</a
+          >
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="pagination d-flex justify-end" autoHide="true">
+    <pagination-controls (pageChange)="changePage($event)">
+    </pagination-controls>
+  </div>
+</div>
