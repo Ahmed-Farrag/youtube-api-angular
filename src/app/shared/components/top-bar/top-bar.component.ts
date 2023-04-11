@@ -8,10 +8,10 @@ import { VideosService } from 'src/app/inmobly/services/videos.service';
   styleUrls: ['./top-bar.component.scss'],
 })
 export class TopBarComponent implements OnInit {
-  constructor(private fb: FormBuilder, private apichannel: VideosService) {}
+  constructor(private fb: FormBuilder, private apichannel: VideosService) { }
 
   form!: FormGroup;
-
+  active: boolean = false
   ngOnInit(): void {
     this.initializeForm();
   }
