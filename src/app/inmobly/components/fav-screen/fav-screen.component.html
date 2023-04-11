@@ -14,12 +14,12 @@
           <p>{{ item.items[0].snippet.publishedAt | date : "MMM,dd,YYYY" }}</p>
           <h3>{{ item.items[0].snippet.rate }}</h3>
         </div>
-        <!-- <button class="btn btn-info" >Details</button> -->
       </div>
+      <button class="btn btn-danger" (click)="remove(index)">Remove</button>
     </div>
   </div>
   <div class="text-center">
-    <button class="btn btn-danger" (click)="remove()">Remove All</button>
+    <button class="btn btn-danger" (click)="removeAll()">Remove All</button>
     <button class="btn btn-outline-dark m-3" (click)="goBack()">Back</button>
   </div>
 </div>

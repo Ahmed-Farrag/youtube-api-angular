@@ -9,16 +9,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./fav-screen.component.scss']
 })
 export class FavScreenComponent implements OnInit {
-
-  constructor(private location: Location,
-    private toastr: ToastrService,
-    private router: Router) { }
   favItem: any[] = []
   item: any
 
   loading: boolean = false
-  index: any
 
+  index: any;
+
+  constructor(private location: Location,
+    private toastr: ToastrService,
+    private router: Router) { }
+
+
+  // index: number | number;
   ngOnInit(): void {
     this.addFav()
   }
@@ -32,20 +35,26 @@ export class FavScreenComponent implements OnInit {
   }
 
 
-  remove() {
-    this.favItem = []
-    // this.favItem.splice(index, 1)
-    localStorage.setItem("fav", JSON.stringify(this.favItem))
-    this.toastr.error('Didnt have Favorite Videos');
+  removeAll() {
     // this.loading = true
-    this.router.navigate(['home'])
+    let x = this.favItem = []
+    if (x) {
+      localStorage.setItem("fav", JSON.stringify(this.favItem))
+      this.toastr.error('Didnt have Favorite Videos');
+      this.router.navigate(['home'])
+    }
   }
 
   goBack() {
     this.location.back()
   }
-  // goBackTo() {
-  //   this.location.back()
-  // }
+
+  remove(index: number) {
+    console.log('hi', index);
+    // handel
+    this.favItem.splice(index, 1)
+    localStorage.setItem("fav", JSON.stringify(this.favItem))
+
+  }
 
 }

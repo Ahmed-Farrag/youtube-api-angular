@@ -47,7 +47,6 @@ export class DetailsComponent implements OnInit {
       let exist = this.favItem.find(items => items.etag == this.data.etag);
       if (exist) {
         this.toastr.error('video is already in ur list');
-
       } else {
         this.favItem.push(this.data);
         localStorage.setItem('fav', JSON.stringify(this.favItem));
@@ -60,9 +59,7 @@ export class DetailsComponent implements OnInit {
     }
   }
 
-  // showSuccess() {
 
-  // }
 
   // starFunc() {
   //   console.log('star heo');
