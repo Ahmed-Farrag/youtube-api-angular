@@ -13,9 +13,9 @@ export class VideosService {
   videos: any = [];
   private listner = new Subject<any>();
   reader$ = this.listner.asObservable();
+
   constructor(public http: HttpClient) { }
   getAllVideos(channel: string): Observable<any> {
-
     const APIURL = `https://www.googleapis.com/youtube/v3/search?key=${environment.APIKEY}&channelId=${channel}&part=snippet,id&order=date&maxResults=10`;
     return this.http.get(`${APIURL}`);
   }

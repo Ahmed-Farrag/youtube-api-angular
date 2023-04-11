@@ -1,9 +1,14 @@
-.card-text small{
+.card-text small {
     color: red;
     font-weight: 600;
 }
 
-::ng-deep label.star{
-padding: 0 5px !important;
-font-size: 20px !important;
+::ng-deep label.star {
+    padding: 0 5px !important;
+    font-size: 20px !important;
+}
+
+
+.sppiner {
+    padding-top: 40vh;
 }

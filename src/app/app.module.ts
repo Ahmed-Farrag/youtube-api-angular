@@ -16,12 +16,6 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { ServiceWorkerModule } from '@angular/service-worker';
 // import { environment } from 'src/environments/environment.production';
 
-
-
-
-
-
-
 @NgModule({
   declarations: [
     AppComponent,

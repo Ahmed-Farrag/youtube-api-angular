@@ -1,6 +1,6 @@
 export const environment = {
     Production: false,
-    APIKEY: 'AIzaSyC6wJGKw_2NUvZdbwRroQJu9X3MpDbgM-g'
+    APIKEY: 'AIzaSyDoUsVYEjiavzGUPZBCDvqhq44682yGUg0'
 
 };
 

@@ -1,53 +1,57 @@
-<div class="mb-3">
+<div class="mb-3" *ngIf="!loading">
   <img
     src="{{ data.items[0].snippet.thumbnails.medium.url }}"
     class="card-img-top"
     alt="..."
   />
-  <div class="">
-    <div class="container-fluid">
-      <div class="row p-7">
-        <div class="col-md-6">
-          <h5 class="card-title mt-2">{{ data.items[0].snippet.title }}</h5>
-        </div>
-        <div class="col-md-6 d-flex justify-content-end">
-          <button
-            type="button"
-            class="btn btn-danger bg-red-600"
-            (click)="add()"
-            routerLink="/fav"
-          >
-            Add To Favorite
-          </button>
-        </div>
-      </div>
-      <hr />
-      <div class="row p-7">
-        <div class="col-md-4 d-flex">
-          Rate Now:
-          <ngx-star-rating class="mx-2" [id]="'rating'"></ngx-star-rating>
-        </div>
-        <div class="col-md-4 text-center">
-          <p>
-            Duration
-            {{ data.items[0].snippet.publishedAt | date : "h:mm:ss" }}
-          </p>
-        </div>
-        <div class="col-md-4 d-flex justify-content-end">
-          <app-statistec></app-statistec>
-        </div>
-      </div>
-      <hr />
-      <div class="card-text p-3">
-        <small class="text-body-secondary"
-          >Published on:
-          {{ data.items[0].snippet.publishedAt | date : "MMM,dd,YYYY" }}</small
-        >
 
-        <p>
-          {{ data.items[0].snippet.description }}
-        </p>
+  <div class="container-fluid">
+    <div class="row p-7">
+      <div class="col-md-6">
+        <h5 class="card-title mt-2">{{ data.items[0].snippet.title }}</h5>
+      </div>
+      <div class="col-md-6 d-flex justify-content-end">
+        <button
+          type="button"
+          class="btn btn-danger bg-red-600"
+          (click)="add()"
+          routerLink="/fav"
+        >
+          <!-- [disabled]="isUserLogged" -->
+          Add To Favorite
+        </button>
       </div>
     </div>
+    <hr />
+    <div class="row p-7">
+      <div class="col-md-4 d-flex">
+        Rate Now:
+        <ngx-star-rating class="mx-2" [id]="'rating'"></ngx-star-rating>
+      </div>
+      <div class="col-md-4 text-center">
+        <p>
+          Duration
+          {{ data.items[0].snippet.publishedAt | date : "h:mm:ss" }}
+        </p>
+      </div>
+      <div class="col-md-4 d-flex justify-content-end">
+        <app-statistec></app-statistec>
+      </div>
+    </div>
+    <hr />
+    <div class="card-text p-3">
+      <small class="text-body-secondary"
+        >Published on:
+        {{ data.items[0].snippet.publishedAt | date : "MMM,dd,YYYY" }}</small
+      >
+
+      <p>
+        {{ data.items[0].snippet.description }}
+      </p>
+    </div>
   </div>
+</div>
+
+<div class="sppiner text-center w-100" *ngIf="loading">
+  <app-spinner></app-spinner>
 </div>

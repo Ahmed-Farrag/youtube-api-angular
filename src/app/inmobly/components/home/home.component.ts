@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NgxSpinnerService } from 'ngx-spinner';
 import { VideosService } from '../../services/videos.service';
 
 
@@ -13,13 +12,14 @@ export class HomeComponent implements OnInit {
   data: any = {};
   page: any = 1;
   total: any;
-
+  loading: boolean = false
   constructor(
-    private spinner: NgxSpinnerService,
+
     private apichannel: VideosService
   ) {
     this.apichannel.reader$.subscribe((data) => {
       this.videos = data.items;
+      this.loading = false
     });
   }
   ngOnInit(): void {
@@ -29,6 +29,7 @@ export class HomeComponent implements OnInit {
 
   }
   getVideos(): void {
+    this.loading = true
     this.apichannel.test('UCAuUUnT6oDeKwE6v1NGQxug');
   }
 
@@ -43,5 +44,8 @@ export class HomeComponent implements OnInit {
   //     console.log('oky');
   //   }
   // }
+
+  // loading
+
 
 }

@@ -40,29 +40,33 @@
       </tr>
     </thead>
     <tbody>
-      <tr
-        *ngFor="
-          let video of videos
-            | paginate
-              : {
-                  itemsPerPage: 5,
-                  currentPage: page,
-                  totalItems: total
-                }
-        "
-        routerLink="/details/{{ video.id.videoId }}"
-      >
-        <td><img src="{{ video.snippet.thumbnails.medium.url }}" alt="" /></td>
-        <td>{{ video.snippet.title }}</td>
-        <td>{{ video.snippet.publishedAt | date : "dd-M-YYYY" }}</td>
-        <td>
-          <a
-            class="btn border hover:bg-red-600 hover:text-white"
-            routerLink="/details"
-            >Details</a
-          >
-        </td>
-      </tr>
+      <ng-container *ngIf="!loading">
+        <tr
+          *ngFor="
+            let video of videos
+              | paginate
+                : {
+                    itemsPerPage: 5,
+                    currentPage: page,
+                    totalItems: total
+                  }
+          "
+          routerLink="/details/{{ video.id.videoId }}"
+        >
+          <td>
+            <img src="{{ video.snippet.thumbnails.medium.url }}" alt="" />
+          </td>
+          <td>{{ video.snippet.title }}</td>
+          <td>{{ video.snippet.publishedAt | date : "dd-M-YYYY" }}</td>
+          <td>
+            <a
+              class="btn border hover:bg-red-600 hover:text-white"
+              routerLink="/details"
+              >Details</a
+            >
+          </td>
+        </tr>
+      </ng-container>
     </tbody>
   </table>
 
@@ -70,4 +74,8 @@
     <pagination-controls (pageChange)="changePage($event)">
     </pagination-controls>
   </div>
+</div>
+
+<div class="sppiner text-center w-100" *ngIf="loading">
+  <app-spinner></app-spinner>
 </div>

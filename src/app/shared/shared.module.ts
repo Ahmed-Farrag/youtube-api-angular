@@ -4,12 +4,13 @@ import { TopBarComponent } from './components/top-bar/top-bar.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 
 @NgModule({
-  declarations: [TopBarComponent],
+  declarations: [TopBarComponent, SpinnerComponent],
   imports: [BrowserModule, CommonModule, ReactiveFormsModule, FormsModule,
     RouterModule],
-  exports: [TopBarComponent],
+  exports: [TopBarComponent, SpinnerComponent],
 })
-export class SharedModule {}
+export class SharedModule { }

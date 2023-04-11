@@ -14,7 +14,10 @@ export class DetailsComponent implements OnInit {
 
   favItem: any[] = [];
   starItem: any[] = [];
-  item: any;
+  videos: any;
+
+  loading: boolean = false
+  // isUserLogged: boolean = false;
   constructor(
     private route: ActivatedRoute,
     private spinner: NgxSpinnerService,
@@ -26,22 +29,36 @@ export class DetailsComponent implements OnInit {
     this.getVideo();
   }
   getVideo() {
+    this.loading = true
+
     this.apichannel.getVideoById(this.id).subscribe((res) => {
       this.data = res;
-    });
+      this.loading = false
+    }, error => {
+      this.loading = false
+      alert(error)
+    }
+    );
   }
 
   add() {
     if ('fav' in localStorage) {
       this.favItem = JSON.parse(localStorage.getItem('fav')!);
+      let exist = this.favItem.find(videos => videos.id == this.data.id)
+      // if (exist) {
+      //   alert("product is already in ur cart")
+      // } else {
       this.favItem.push(this.data);
       localStorage.setItem('fav', JSON.stringify(this.favItem));
       // console.log(this.data);
+      // }
     } else {
       this.favItem.push(this.data);
       localStorage.setItem('fav', JSON.stringify(this.favItem));
     }
   }
+
+
 
   // starFunc() {
   //   console.log('star heo');
