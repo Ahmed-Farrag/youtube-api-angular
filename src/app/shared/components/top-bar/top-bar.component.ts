@@ -16,11 +16,15 @@ export class TopBarComponent implements OnInit {
     this.initializeForm();
   }
 
+  // to make shearch input required
   initializeForm(): void {
     this.form = this.fb.group({
       search: ['', Validators.required],
     });
   }
+
+  // method in servece to search by name
+  // pass value  
   searchbtn() {
     // console.log(this.form.value.search);
     this.apichannel.searchByName(this.form.value.search);

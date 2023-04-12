@@ -66,6 +66,7 @@ export class DetailsComponent implements OnInit {
       localStorage.setItem('fav', JSON.stringify(this.favItem));
     }
   }
+  // star rating btn to handle count and handle it in localstoge
   countStar(star: number) {
     this.selectedValue = star;
     console.log(star);

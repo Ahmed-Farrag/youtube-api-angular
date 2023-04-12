@@ -22,12 +22,12 @@ export class FavScreenComponent implements OnInit {
     private router: Router) { }
 
 
-
   ngOnInit(): void {
     this.addFav()
     this.getStar()
   }
 
+  // show count method from localstorge
   addFav() {
     if ('fav' in localStorage) {
       this.favItem = JSON.parse(localStorage.getItem('fav')!);
@@ -36,17 +36,16 @@ export class FavScreenComponent implements OnInit {
     }
   }
 
+  // show count method from localstorge
   getStar() {
     if ('star' in localStorage) {
       this.favStar = JSON.parse(localStorage.getItem('star')!);
-
     } else {
-      console.log('not found');
-
+      this.toastr.error('Not Found In Stoge');
     }
   }
 
-
+  // remove All videos from favorite list
   removeAll() {
     // this.loading = true
     let x = this.favItem = []

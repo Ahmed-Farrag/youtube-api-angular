@@ -20,12 +20,13 @@ export class StatistecComponent implements OnInit {
     this.getVideoStat();
 
   }
+
+  // make subscribe for api req
   getVideoStat() {
-    this.apichannel.getVideoStata(this.id).subscribe((res) => {
+    this.apichannel.getStatisticsVideo(this.id).subscribe((res) => {
       this.data = res;
-      // console.log(res);
     });
   }
 
- 
+
 }

@@ -31,3 +31,12 @@
     display: inline-block;
     list-style: none;
 }
+
+
+
+
+@media only screen and (max-width: 400px) {
+    .duration {
+        padding: 20px;
+    }
+}

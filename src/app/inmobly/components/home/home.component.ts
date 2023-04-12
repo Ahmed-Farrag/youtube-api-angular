@@ -16,7 +16,6 @@ export class HomeComponent implements OnInit {
 
   orderHeader: String = ''
   constructor(
-
     private apichannel: VideosService
   ) {
     this.apichannel.reader$.subscribe((data) => {
@@ -26,21 +25,22 @@ export class HomeComponent implements OnInit {
   }
   ngOnInit(): void {
     this.getVideos();
-    // setTimeout(()=>{this.apichannel.test('mr beast')},3000)
-    // this.sortData()
+
 
   }
+  // get videos and pass channel id
   getVideos(): void {
     this.loading = true
     this.apichannel.test('UCAuUUnT6oDeKwE6v1NGQxug');
   }
 
+  // pagination method
   changePage(event: any) {
     this.page = event;
   }
 
   // sort function btn
-  sort(headerTitle: string) {
+  sortBtn(headerTitle: string) {
     this.orderHeader = headerTitle
   }
 

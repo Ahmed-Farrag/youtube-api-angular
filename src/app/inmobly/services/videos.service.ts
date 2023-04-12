@@ -32,7 +32,9 @@ export class VideosService {
     const APIURL = `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${id}&key=${environment.APIKEY}`;
     return this.http.get(APIURL);
   }
-  getVideoStata(id: any) {
+
+  // to get Statistics object in api
+  getStatisticsVideo(id: any) {
     const APIURL = `https://www.googleapis.com/youtube/v3/videos?part=statistics&id=${id}&key=${environment.APIKEY}`;
     return this.http.get(APIURL);
   }
