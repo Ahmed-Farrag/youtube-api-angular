@@ -14,6 +14,7 @@ import { NgxStarRatingModule } from 'ngx-star-rating';
 import { OrderModule } from 'ngx-order-pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { OfflineComponent } from './components/offline/offline.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { ToastrModule } from 'ngx-toastr';
     DetailsComponent,
     StatistecComponent,
     FavScreenComponent,
+    OfflineComponent,
   ],
   imports: [
     BrowserModule,
