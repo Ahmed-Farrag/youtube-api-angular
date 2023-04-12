@@ -50,8 +50,7 @@ export class FavScreenComponent implements OnInit {
   }
 
   remove(index: number) {
-    console.log('hi', index);
-    // handel
+
     this.favItem.splice(index, 1)
     localStorage.setItem("fav", JSON.stringify(this.favItem))
 

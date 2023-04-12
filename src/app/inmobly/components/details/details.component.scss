@@ -12,3 +12,22 @@
 .sppiner {
     padding-top: 40vh;
 }
+
+
+.rating-list li {
+    float: right;
+    color: #ddd;
+    padding: 10px 5px;
+
+}
+
+
+
+.rating-list li.selected {
+    color: #ffd700;
+}
+
+.rating-list {
+    display: inline-block;
+    list-style: none;
+}

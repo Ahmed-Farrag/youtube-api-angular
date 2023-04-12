@@ -2,7 +2,7 @@
 
 <div class="container pt-4" *ngIf="!loading">
   <div class="row">
-    <div class="col-md-3" *ngFor="let item of favItem">
+    <div class="col-md-3" *ngFor="let item of favItem; let index = index">
       <div class="card mb-3" (click)="goBack()">
         <img
           src="{{ item.items[0].snippet.thumbnails.medium.url }}"

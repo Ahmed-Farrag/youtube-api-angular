@@ -26,8 +26,20 @@
     <hr />
     <div class="row p-7">
       <div class="col-md-4 d-flex">
-        Rate Now:
-        <ngx-star-rating class="mx-2" [id]="'rating'"></ngx-star-rating>
+        <!-- Rate Now:
+        <ngx-star-rating class="mx-2" [id]="'rating'"></ngx-star-rating> -->
+        <ul
+          class="list-inline rating-list"
+          *ngFor="let star of stars"
+          style="display: inline-block"
+        >
+          <li
+            (click)="countStar(star)"
+            [ngClass]="{ selected: star <= selectedValue }"
+          >
+            <i class="fa fa-star"></i>
+          </li>
+        </ul>
       </div>
       <div class="col-md-4 text-center">
         <p>

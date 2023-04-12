@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { VideosService } from '../../services/videos.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -11,9 +11,13 @@ import { ToastrService } from 'ngx-toastr';
 export class DetailsComponent implements OnInit {
   id: any;
   data: any = {};
+  star: any = {};
 
   favItem: any[] = [];
-  starItem: any[] = [];
+  stars: number[] = [1, 2, 3, 4, 5];
+  selectedValue!: number;
+  favStar: any[] = [];
+
   items: any;
 
   loading: boolean = false
@@ -21,7 +25,8 @@ export class DetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private apichannel: VideosService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router
   ) {
     this.id = this.route.snapshot.paramMap.get('id');
   }
@@ -47,6 +52,7 @@ export class DetailsComponent implements OnInit {
       let exist = this.favItem.find(items => items.etag == this.data.etag);
       if (exist) {
         this.toastr.error('video is already in ur list');
+        this.router.navigate(['home'])
       } else {
         this.favItem.push(this.data);
         localStorage.setItem('fav', JSON.stringify(this.favItem));
@@ -58,22 +64,27 @@ export class DetailsComponent implements OnInit {
       localStorage.setItem('fav', JSON.stringify(this.favItem));
     }
   }
+  countStar(star: number) {
+    this.selectedValue = star;
+    console.log(star);
+    if ('star' in localStorage) {
+      this.favStar = JSON.parse(localStorage.getItem('star')!);
+      // let exist = this.favStar.find(items => items.etag == this.data.etag);
+      // if (exist) {
+      // this.toastr.error('have star');
+      // this.router.navigate(['home'])
+    } else {
+      this.favStar.push(this.star);
+      localStorage.setItem('star', JSON.stringify(this.favStar));
+      // console.log(this.data);
+      this.toastr.success('Added star');
+    }
+    // } else {
+    //   this.favStar.push(this.data);
+    //   localStorage.setItem('fav', JSON.stringify(this.favStar));
+    // }
+  }
 
 
 
-  // starFunc() {
-  //   console.log('star heo');
-
-  //   localStorage.setItem('star', JSON.stringify(this.starItem))
-  //   if ('star' in localStorage) {
-  //     this.starItem = JSON.parse(localStorage.getItem('star')!);
-  //     this.starItem.push(this.data);
-  //     localStorage.setItem('star', JSON.stringify(this.starItem));
-
-  //     console.log(this.data);
-  //   } else {
-  //     this.starItem.push(this.data);
-  //     localStorage.setItem('star', JSON.stringify(this.starItem));
-  //   }
-  // }
 }
