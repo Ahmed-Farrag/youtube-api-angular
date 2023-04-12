@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { Video } from '../../models/video';
 
 @Component({
   selector: 'app-fav-screen',
@@ -13,7 +14,7 @@ export class FavScreenComponent implements OnInit {
   favItem: any[] = []
   item: any
   // for rating
-  favStar: any[] = [];
+  favStar: Video[] = [];
   index: any;
 
   constructor(private location: Location, private toastr: ToastrService, private router: Router) { }

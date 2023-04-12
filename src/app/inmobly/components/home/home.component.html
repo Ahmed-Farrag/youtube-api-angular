@@ -62,7 +62,10 @@
           routerLink="/details/{{ video.id.videoId }}"
         >
           <td>
-            <img src="{{ video.snippet.thumbnails.medium.url }}" alt="" />
+            <img
+              src="{{ video.snippet.thumbnails.medium.url }}"
+              alt="video-img"
+            />
           </td>
           <td class="title">{{ video.snippet.title | slice : 0 : 35 }}...</td>
           <td class="date">

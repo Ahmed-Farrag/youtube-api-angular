@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { VideosService } from '../../services/videos.service';
+import { Video } from '../../models/video';
 
 
 @Component({
@@ -8,10 +9,10 @@ import { VideosService } from '../../services/videos.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  videos: any[] = [];
-  data: any = {};
+  videos: Video[] = [];
+  data: Video | undefined;
   // for pagination
-  page: any = 1;
+  page: number = 1;
   total: any;
   // for toster
   loading: boolean = false
