@@ -12,10 +12,13 @@
         <div class="card-body">
           <h5 class="card-title">{{ item.items[0].snippet.title }}</h5>
           <p>{{ item.items[0].snippet.publishedAt | date : "MMM,dd,YYYY" }}</p>
-          <h3>{{ item.items[0].snippet.rate }}</h3>
+
+          <ul class="list-inline rating-list" style="display: inline-block">
+            <li>{{ favStar[index] }} <i class="fa fa-star"></i></li>
+          </ul>
         </div>
+        <button class="btn btn-danger" (click)="remove(index)">Remove</button>
       </div>
-      <button class="btn btn-danger" (click)="remove(index)">Remove</button>
     </div>
   </div>
   <div class="text-center">
@@ -26,6 +29,5 @@
 
 <div class="sppiner text-center w-100" *ngIf="loading">
   <!-- <app-spinner></app-spinner> -->
-  <!-- <h3>Didn't have Favorite Video, plz go back</h3> -->
   <button class="btn btn-outline-dark mt-3" (click)="goBack()">Back</button>
 </div>

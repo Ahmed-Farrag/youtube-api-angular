@@ -10,10 +10,11 @@ import { Router } from '@angular/router';
 })
 export class FavScreenComponent implements OnInit {
   favItem: any[] = []
+
+  favStar: any[] = [];
   item: any
 
   loading: boolean = false
-
   index: any;
 
   constructor(private location: Location,
@@ -21,9 +22,10 @@ export class FavScreenComponent implements OnInit {
     private router: Router) { }
 
 
-  // index: number | number;
+
   ngOnInit(): void {
     this.addFav()
+    this.getStar()
   }
 
   addFav() {
@@ -31,6 +33,16 @@ export class FavScreenComponent implements OnInit {
       this.favItem = JSON.parse(localStorage.getItem('fav')!);
     } else {
       this.loading = true
+    }
+  }
+
+  getStar() {
+    if ('star' in localStorage) {
+      this.favStar = JSON.parse(localStorage.getItem('star')!);
+
+    } else {
+      console.log('not found');
+
     }
   }
 
@@ -43,6 +55,12 @@ export class FavScreenComponent implements OnInit {
       this.toastr.error('Didnt have Favorite Videos');
       this.router.navigate(['home'])
     }
+    let z = this.favStar = []
+    if (z) {
+      localStorage.setItem("star", JSON.stringify(this.favStar))
+      this.toastr.error('Didnt have Favorite Videos');
+
+    }
   }
 
   goBack() {
@@ -52,7 +70,9 @@ export class FavScreenComponent implements OnInit {
   remove(index: number) {
 
     this.favItem.splice(index, 1)
+    this.favStar.splice(index, 1)
     localStorage.setItem("fav", JSON.stringify(this.favItem))
+    localStorage.setItem("star", JSON.stringify(this.favStar))
 
   }
 

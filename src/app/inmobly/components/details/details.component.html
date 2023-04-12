@@ -14,38 +14,36 @@
       <div class="col-md-6 d-flex justify-content-end">
         <button
           type="button"
-          class="btn btn-danger bg-red-600"
+          class="btn btn-danger bg-red-600 m-3"
           (click)="add()"
           routerLink="/fav"
         >
-          <!-- [disabled]="isUserLogged" -->
           Add To Favorite
         </button>
       </div>
     </div>
     <hr />
-    <div class="row p-7">
+    <div class="row m-4">
       <div class="col-md-4 d-flex">
-        <!-- Rate Now:
-        <ngx-star-rating class="mx-2" [id]="'rating'"></ngx-star-rating> -->
+        <span class="pr-5"> Rate Now</span>
         <ul
           class="list-inline rating-list"
           *ngFor="let star of stars"
           style="display: inline-block"
         >
-          <li
-            (click)="countStar(star)"
-            [ngClass]="{ selected: star <= selectedValue }"
+          <button
+            [disabled]="clicked"
+            (click)="countStar(star); clicked = true"
           >
-            <i class="fa fa-star"></i>
-          </li>
+            <li [ngClass]="{ selected: star <= selectedValue }">
+              <i class="fa fa-star"> </i>
+            </li>
+          </button>
         </ul>
       </div>
-      <div class="col-md-4 text-center">
-        <p>
-          Duration
-          {{ data.items[0].snippet.publishedAt | date : "h:mm:ss" }}
-        </p>
+      <div class="col-md-4 text-center p-4">
+        Duration
+        {{ data.items[0].snippet.publishedAt | date : "h:mm:ss" }}
       </div>
       <div class="col-md-4 d-flex justify-content-end">
         <app-statistec></app-statistec>

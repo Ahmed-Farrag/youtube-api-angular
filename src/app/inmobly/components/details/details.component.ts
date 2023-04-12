@@ -21,6 +21,7 @@ export class DetailsComponent implements OnInit {
   items: any;
 
   loading: boolean = false
+  clicked = false;
   // isUserLogged: boolean = false;
   constructor(
     private route: ActivatedRoute,
@@ -32,6 +33,7 @@ export class DetailsComponent implements OnInit {
   }
   ngOnInit(): void {
     this.getVideo();
+
   }
   getVideo() {
     this.loading = true
@@ -69,21 +71,28 @@ export class DetailsComponent implements OnInit {
     console.log(star);
     if ('star' in localStorage) {
       this.favStar = JSON.parse(localStorage.getItem('star')!);
-      // let exist = this.favStar.find(items => items.etag == this.data.etag);
-      // if (exist) {
-      // this.toastr.error('have star');
-      // this.router.navigate(['home'])
+
+      let exist = this.favItem.find(items => items.index == this.selectedValue);
+      if (exist) {
+        this.toastr.error('star is already in ur list');
+        this.router.navigate(['home'])
+      } else {
+        this.favStar.push(this.selectedValue);
+        localStorage.setItem('star', JSON.stringify(this.favStar));
+        this.toastr.success('Added star');
+      }
+
+      // this.favStar.push(this.selectedValue);
+      // localStorage.setItem('star', JSON.stringify(this.favStar));
+      // this.toastr.success('Added star');
     } else {
-      this.favStar.push(this.star);
+      this.favStar.push(this.selectedValue);
       localStorage.setItem('star', JSON.stringify(this.favStar));
-      // console.log(this.data);
-      this.toastr.success('Added star');
     }
-    // } else {
-    //   this.favStar.push(this.data);
-    //   localStorage.setItem('fav', JSON.stringify(this.favStar));
-    // }
+
   }
+
+
 
 
 
