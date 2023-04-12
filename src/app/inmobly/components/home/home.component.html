@@ -1,5 +1,11 @@
 <app-top-bar></app-top-bar>
+
 <div class="container-md">
+  <div class="favbtn d-flex justify-content-center">
+    <button type="button" class="btn btn-danger bg-red-600" routerLink="/fav">
+      Add To Favorite
+    </button>
+  </div>
   <table class="table mt-2">
     <thead>
       <tr>
@@ -21,7 +27,7 @@
           </svg>
           Title
         </th>
-        <th (click)="sortBtn('snippet.snippet.publishedAt')">
+        <th class="date" (click)="sortBtn('snippet.snippet.publishedAt')">
           <svg
             aria-hidden="true"
             class="w-5 h-5 d-inline"
@@ -58,8 +64,10 @@
           <td>
             <img src="{{ video.snippet.thumbnails.medium.url }}" alt="" />
           </td>
-          <td>{{ video.snippet.title }}</td>
-          <td>{{ video.snippet.publishedAt | date : "dd-M-YYYY" }}</td>
+          <td class="title">{{ video.snippet.title | slice : 0 : 35 }}...</td>
+          <td class="date">
+            {{ video.snippet.publishedAt | date : "dd-M-YYYY" }}
+          </td>
           <td>
             <a
               class="btn border hover:bg-red-600 hover:text-white"

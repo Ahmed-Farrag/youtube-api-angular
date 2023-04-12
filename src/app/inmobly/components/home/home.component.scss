@@ -16,23 +16,25 @@
     background: #adb5bd !important;
     border-radius: 10px;
   }
-
-
-  //   .ngx-pagination .current::after {
-  //     content: '<';
-  //   }
-  //   .ngx-pagination .current:active {
-  //     content: '';
-  //   }
-  //   .ngx-pagination .current span {
-  //     display: none !important;
-  //   }
 }
-
-
 
 
 
 .sppiner {
   padding-top: 20vh;
+}
+
+.title {
+  font-size: 20px;
+
+}
+
+@media only screen and (max-width: 400px) {
+  .date {
+    display: none;
+  }
+
+  .title {
+    font-size: 15px;
+  }
 }

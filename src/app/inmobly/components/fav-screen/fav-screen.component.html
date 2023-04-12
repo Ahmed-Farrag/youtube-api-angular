@@ -1,6 +1,6 @@
 <app-imgnav></app-imgnav>
 
-<div class="container pt-4" *ngIf="!loading">
+<div class="container pt-4">
   <div class="row">
     <div class="col-md-3" *ngFor="let item of favItem; let index = index">
       <div class="card mb-3" (click)="goBack()">
@@ -21,13 +21,10 @@
       </div>
     </div>
   </div>
-  <div class="text-center">
+  <div class="text-center mt-5">
     <button class="btn btn-danger" (click)="removeAll()">Remove All</button>
     <button class="btn btn-outline-dark m-3" (click)="goBack()">Back</button>
   </div>
 </div>
 
-<div class="sppiner text-center w-100" *ngIf="loading">
-  <!-- <app-spinner></app-spinner> -->
-  <button class="btn btn-outline-dark mt-3" (click)="goBack()">Back</button>
-</div>
+

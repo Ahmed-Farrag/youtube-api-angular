@@ -9,70 +9,66 @@ import { Router } from '@angular/router';
   styleUrls: ['./fav-screen.component.scss']
 })
 export class FavScreenComponent implements OnInit {
+  // for videos
   favItem: any[] = []
-
-  favStar: any[] = [];
   item: any
-
-  loading: boolean = false
+  // for rating
+  favStar: any[] = [];
   index: any;
 
-  constructor(private location: Location,
-    private toastr: ToastrService,
-    private router: Router) { }
-
+  constructor(private location: Location, private toastr: ToastrService, private router: Router) { }
 
   ngOnInit(): void {
-    this.addFav()
+    this.addFavorite()
     this.getStar()
   }
 
-  // show count method from localstorge
-  addFav() {
+  // show videos from localstorge
+  addFavorite() {
     if ('fav' in localStorage) {
       this.favItem = JSON.parse(localStorage.getItem('fav')!);
     } else {
-      this.loading = true
+      this.toastr.error('have massing to show data');
     }
   }
 
-  // show count method from localstorge
+  // show rating from localstorge
   getStar() {
     if ('star' in localStorage) {
       this.favStar = JSON.parse(localStorage.getItem('star')!);
     } else {
-      this.toastr.error('Not Found In Stoge');
+      this.toastr.error('Not Found In Storge');
     }
   }
 
   // remove All videos from favorite list
+  // navigate to anther pass if method done
+  // for ratings and videos
   removeAll() {
-    // this.loading = true
-    let x = this.favItem = []
-    if (x) {
+    let videolocal = this.favItem = []
+    if (videolocal) {
       localStorage.setItem("fav", JSON.stringify(this.favItem))
-      this.toastr.error('Didnt have Favorite Videos');
+      this.toastr.success('videos removed');
       this.router.navigate(['home'])
     }
-    let z = this.favStar = []
-    if (z) {
+    let starlocal = this.favStar = []
+    if (starlocal) {
       localStorage.setItem("star", JSON.stringify(this.favStar))
-      this.toastr.error('Didnt have Favorite Videos');
-
     }
   }
 
+  // method to remove one item from localstorge - for rating and video
+  remove(index: number) {
+    this.favItem.splice(index, 1)
+    localStorage.setItem("fav", JSON.stringify(this.favItem))
+    this.favStar.splice(index, 1)
+    localStorage.setItem("star", JSON.stringify(this.favStar))
+    this.toastr.success('Video Deleted');
+
+  }
+
+  // redirect location method
   goBack() {
     this.location.back()
   }
-
-  remove(index: number) {
-
-    this.favItem.splice(index, 1)
-    this.favStar.splice(index, 1)
-    localStorage.setItem("fav", JSON.stringify(this.favItem))
-    localStorage.setItem("star", JSON.stringify(this.favStar))
-
-  }
-
 }

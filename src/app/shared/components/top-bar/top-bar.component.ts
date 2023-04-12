@@ -29,4 +29,6 @@ export class TopBarComponent implements OnInit {
     // console.log(this.form.value.search);
     this.apichannel.searchByName(this.form.value.search);
   }
+
+
 }

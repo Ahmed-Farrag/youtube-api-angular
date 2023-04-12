@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { VideosService } from '../../services/videos.service';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-statistec',
@@ -12,20 +13,23 @@ export class StatistecComponent implements OnInit {
   data: any = {};
   constructor(
     private apichannel: VideosService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private toastr: ToastrService,
   ) {
-    this.id = this.route.snapshot.paramMap.get('id');
+
   }
   ngOnInit(): void {
-    this.getVideoStat();
-
+    this.getVideoStatics();
   }
 
   // make subscribe for api req
-  getVideoStat() {
+  getVideoStatics() {
+    this.id = this.route.snapshot.paramMap.get('id');
     this.apichannel.getStatisticsVideo(this.id).subscribe((res) => {
-      this.data = res;
-    });
+      this.data = res
+    }, error => {
+      this.toastr.error('Missing to load data', error);
+    })
   }
 
 
