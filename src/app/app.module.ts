@@ -10,6 +10,8 @@ import { CommonModule } from '@angular/common';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { InmoblyModule } from './inmobly/inmobly.module';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from 'src/environments/environment.development';
 
 
 
@@ -20,6 +22,7 @@ import { InmoblyModule } from './inmobly/inmobly.module';
 
   ],
   imports: [
+    BrowserModule,
     CommonModule,
     AppRoutingModule,
     SharedModule,
@@ -27,7 +30,7 @@ import { InmoblyModule } from './inmobly/inmobly.module';
     BrowserAnimationsModule,
     InmoblyModule,
 
-    // ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.Production })
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.Production })
   ],
   providers: [],
   bootstrap: [AppComponent]

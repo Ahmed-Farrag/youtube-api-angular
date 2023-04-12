@@ -42,7 +42,6 @@ export class DetailsComponent implements OnInit {
       this.data = res;
       this.loading = false
     }, error => {
-      this.loading = false
       this.toastr.error('Missing to load data', error);
     }
     );
