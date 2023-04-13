@@ -7,7 +7,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 `npm i`
 
 ## Put API KEY
- - take api key from me and put it in 2 environments files
+
+- take api key from me and put it in 2 environments files
 
 ## Development server
 

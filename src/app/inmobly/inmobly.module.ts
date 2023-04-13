@@ -10,7 +10,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { StatistecComponent } from './components/statistec/statistec.component';
 import { FavScreenComponent } from './components/fav-screen/fav-screen.component';
-import { NgxStarRatingModule } from 'ngx-star-rating';
 import { OrderModule } from 'ngx-order-pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
@@ -32,7 +31,6 @@ import { OfflineComponent } from './components/offline/offline.component';
     HttpClientModule,
     RouterModule,
     NgxPaginationModule,
-    NgxStarRatingModule,
     OrderModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
